@@ -1,0 +1,10 @@
+section {
+  width: 100vw;
+  height: calc(100vh - 7rem);
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}

@@ -1,0 +1,36 @@
+header {
+  width: 100vw;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1rem;
+  padding-inline: 4rem;
+  position: fixed;
+  top: 0;
+}
+
+span {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+  font-size: 1.3rem;
+}
+
+a {
+  cursor: pointer;
+  transition: 1s linear;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: gray;
+}

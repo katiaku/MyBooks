@@ -1,0 +1,42 @@
+.container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+input {
+  width: 18rem;
+  border: 2px solid rgb(151, 150, 150);
+  padding-block: .8rem;
+  padding-inline: 1rem;
+  border-radius: .5rem;
+}
+
+input[type="submit"] {
+  background-color: rgb(151, 150, 150);
+  color: white;
+  cursor: pointer;
+  transition: 1s linear;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  background-color: gray;
+  border: 2px solid gray;
+}
