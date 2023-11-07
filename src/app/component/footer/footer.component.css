@@ -9,6 +9,9 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding-inline: 4rem;
+  border-top: 1px solid gray;
+  background-color: white;
+  z-index: 9;
 }
 
 span {
@@ -31,4 +34,24 @@ li {
 
 li:hover {
   color: gray;
+}
+
+@media (max-width: 503px) {
+  footer {
+    gap: 3rem;
+  }
+
+  span {
+    font-size: .6rem;
+  }
+}
+
+@media (max-width: 347px) {
+  footer {
+    gap: 2rem;
+  }
+
+  span {
+    font-size: .4rem;
+  }
 }

@@ -1,0 +1,128 @@
+section {
+  width: 100vw;
+  height: 100%;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 6rem;
+}
+
+.container-books {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 2rem;
+  padding: .3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--border__gray);
+  border-radius: .5rem;
+  gap: 1rem;
+}
+
+.img-container {
+  height: 18rem;
+  background-color: transparent;
+  border-radius: .3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.img-container img {
+  height: 18rem;
+  object-fit: cover;
+}
+
+.impar {
+  width: 100%;
+  background-color: var(--background__lightgreen);
+  color: white;
+  cursor: pointer;
+  transition: 1s linear;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  padding-block: .8rem;
+  padding-inline: 1rem;
+  border-radius: .5rem;
+}
+
+.impar:hover {
+  background-color: var(--background__darkgreen);
+}
+
+.par {
+  width: 100%;
+  background-color: var(--background__lightblue);
+  color: white;
+  cursor: pointer;
+  transition: 1s linear;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  padding-block: .8rem;
+  padding-inline: 1rem;
+  border-radius: .5rem;
+}
+
+.par:hover {
+  background-color: var(--background__darkblue);
+}
+
+.container-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+input {
+  width: 18rem;
+  border: 2px solid var(--border__gray);
+  padding-block: .8rem;
+  padding-inline: 1rem;
+  border-radius: .5rem;
+}
+
+input[type="submit"] {
+  background-color: var(--border__gray);
+  color: white;
+  cursor: pointer;
+  transition: 1s linear;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  background-color: gray;
+  border: 2px solid gray;
+}
