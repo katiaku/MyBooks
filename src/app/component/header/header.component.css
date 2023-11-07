@@ -8,6 +8,9 @@ header {
   padding-inline: 4rem;
   position: fixed;
   top: 0;
+  border-bottom: 1px solid gray;
+  background-color: white;
+  z-index: 9;
 }
 
 span {
@@ -33,4 +36,21 @@ a {
 
 a:hover {
   color: gray;
+}
+
+@media (max-width: 636px) {
+  span {
+    font-size: 1.5rem;
+  }
+
+  header {
+    flex-direction: column;
+    gap: .6rem;
+    height: auto;
+    padding-block: .7rem;
+  }
+
+  ul {
+    font-size: .9rem;
+  }
 }

@@ -5,7 +5,7 @@ export class User {
   email: string;
   photo: string;
   password: string;
-  id_user: string;
+  id_user: number;
 
   constructor(name: string, last_name: string, email: string,
     photo: string, password: string) {
