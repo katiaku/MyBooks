@@ -21,14 +21,14 @@ form {
 
 input {
   width: 18rem;
-  border: 2px solid rgb(151, 150, 150);
+  border: 2px solid var(--border__gray);
   padding-block: .8rem;
   padding-inline: 1rem;
   border-radius: .5rem;
 }
 
 input[type="submit"] {
-  background-color: rgb(151, 150, 150);
+  background-color: var(--border__gray);
   color: white;
   cursor: pointer;
   transition: 1s linear;
