@@ -5,6 +5,11 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+:root {
+  --background__gray: #5b5a5aa7;
+  --border__gray: #979696;
+}
+
 app-root {
   width: 100vw;
   height: 100vh;

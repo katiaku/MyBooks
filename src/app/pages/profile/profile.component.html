@@ -1,0 +1,37 @@
+<section>
+  <div class="container">
+    <div class="container-left">
+      <div class="img-container">
+        <img src="{{ user1.photo }}" alt="{{ user1.name }} {{ user1.last_name }} photo">
+      </div>
+      <div class="name-container">
+        <i class="bi bi-book-fill"></i>
+        <p>{{ user1.name }} {{ user1.last_name }}</p>
+      </div>
+      <div class="data-container">
+        <div class="data-container-element">
+          <p>Nombre:</p><div>{{ user1.name }}</div>
+        </div>
+        <div class="data-container-element">
+          <p>Apellido:</p><div>{{ user1.last_name }}</div>
+        </div>
+        <div class="data-container-element">
+          <p>Correo:</p><div>{{ user1.email }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-right">
+      <h1>Editar datos</h1>
+      <form (submit)="enviar($event, newName, newLastName, newEmail, newUrl)">
+        <input #newName type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <input #newLastName type="text" id="apellido" name="apellido" placeholder="Apellidos">
+        <input #newEmail type="email" id="email" name="email" placeholder="Correo">
+        <input #newUrl type="text" id="url" name="url" placeholder="Url">
+        <input type="submit" value="Modificar">
+        <span *ngIf="verde" style="color: green">Usuario actualizado</span>
+        <span *ngIf="rojo" style="color: red">No se ha detectado cambios</span>
+      </form>
+    </div>
+  </div>
+</section>
