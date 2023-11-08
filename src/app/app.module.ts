@@ -12,6 +12,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
 import { RefPipe } from './pipes/ref.pipe';
 import { CelsFahrPipe } from './pipes/cels-fahr.pipe';
+import { CardComponent } from './component/card/card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CelsFahrPipe } from './pipes/cels-fahr.pipe';
     ProfileComponent,
     BooksComponent,
     RefPipe,
-    CelsFahrPipe
+    CelsFahrPipe,
+    CardComponent
   ],
   imports: [
     BrowserModule,

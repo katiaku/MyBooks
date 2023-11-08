@@ -1,0 +1,81 @@
+.card {
+  margin: 2rem;
+  padding: .3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--border__gray);
+  border-radius: .5rem;
+  gap: .5rem;
+}
+
+.card h1 {
+  font-size: 1.2rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  align-self: flex-end;
+  background-color: transparent;
+  font-size: 1rem;
+}
+
+.bi {
+  color: var(--border__gray);
+  transition: 1s linear;
+}
+
+.bi:hover {
+  color: gray;
+}
+
+.img-container {
+  height: 18rem;
+  background-color: transparent;
+  border-radius: .3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.img-container img {
+  height: 18rem;
+  object-fit: cover;
+}
+
+.impar {
+  width: 100%;
+  background-color: var(--background__lightgreen);
+  color: white;
+  cursor: pointer;
+  transition: 1s linear;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  padding-block: .8rem;
+  padding-inline: 1rem;
+  border-radius: .5rem;
+}
+
+.impar:hover {
+  background-color: var(--background__darkgreen);
+}
+
+.par {
+  width: 100%;
+  background-color: var(--background__lightblue);
+  color: white;
+  cursor: pointer;
+  transition: 1s linear;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  padding-block: .8rem;
+  padding-inline: 1rem;
+  border-radius: .5rem;
+}
+
+.par:hover {
+  background-color: var(--background__darkblue);
+}
