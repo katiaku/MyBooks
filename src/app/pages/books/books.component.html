@@ -1,18 +1,12 @@
 <section>
   <div class="container-books">
     <span *ngIf="books.length === 0">No hay libros <i class="bi bi-emoji-frown"></i></span>
-    <div class="card" *ngFor="let book of books; let even = even">
-      <div class="img-container">
-        <img src="{{ book.photo }}" alt="{{ book.title }} de {{ book.author }} photo">
-      </div>
-      <h1>{{ book.title }}</h1>
-      <p>Tipo: {{ book.type }}</p>
-      <p>Autor: {{ book.author }}</p>
-      <p>Precio: {{ book.price }}</p>
-      <p>ID del libro: {{ book.id_book | ref }}</p>
-      <p>ID del usuario: {{ book.id_user }}</p>
-      <button [ngClass]="{ 'par': even, 'impar': !even }">Comprar</button>
-    </div>
+    <app-card
+      [bookPadre] = "book"
+      [isEven]="even"
+      *ngFor="let book of books; let even = even"
+      (eventoBook) = "deleteBook($event)"
+    ></app-card>
   </div>
 
   <div class="container-form">

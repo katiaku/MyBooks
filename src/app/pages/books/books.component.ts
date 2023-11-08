@@ -27,8 +27,8 @@ export class BooksComponent {
   }
 
   enviar(event: Event, newTitulo: HTMLInputElement, newTipo: HTMLInputElement,
-      newAutor: HTMLInputElement, newPrecio: HTMLInputElement, newPhoto: HTMLInputElement,
-      newIDLibro: HTMLInputElement, newIDUsuario: HTMLInputElement) {
+    newAutor: HTMLInputElement, newPrecio: HTMLInputElement, newPhoto: HTMLInputElement,
+    newIDLibro: HTMLInputElement, newIDUsuario: HTMLInputElement) {
 
     event.preventDefault();
 
@@ -36,6 +36,13 @@ export class BooksComponent {
       newPhoto.value, parseInt(newIDLibro.value), parseInt(newIDUsuario.value));
 
     this.books.push(this.book);
+
+  }
+
+  deleteBook(bookParaBorrar: Book) {
+
+    let index: number = this.books.indexOf(bookParaBorrar);
+    this.books.splice(index, 1);
 
   }
 
