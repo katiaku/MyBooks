@@ -1,19 +1,50 @@
 section {
   width: 100vw;
-  height: 100%;
+  min-height: calc(100vh - 7rem);
   margin-top: 4rem;
   margin-bottom: 3rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 3rem;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 span {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 6rem;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+.container-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--border__gray);
+  border-radius: .5rem;
+  padding-right: 1rem;
+  margin-top: 5rem;
+}
+
+.container-search input {
+  width: 18rem;
+  padding-block: .8rem;
+  padding-inline: 1rem;
+  border: none;
+  border-radius: .5rem;
+}
+
+.container-search input:focus {
+  outline: none;
+}
+
+.container-search button {
+  background: transparent;
+  border: none;
+  color: var(--border__gray);
+  cursor: pointer;
 }
 
 .container-books {
@@ -23,45 +54,18 @@ span {
   flex-wrap: wrap;
 }
 
-.container-form {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+@media (max-width: 330px) {
+  .container-search input {
+    width: 80vw;
+  }
+
+  .container-search {
+    margin-top: 7rem;
+  }
 }
 
-.container-form h1 {
-  font-size: 1.5rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-input {
-  width: 18rem;
-  border: 2px solid var(--border__gray);
-  padding-block: .8rem;
-  padding-inline: 1rem;
-  border-radius: .5rem;
-}
-
-input[type="submit"] {
-  background-color: var(--border__gray);
-  color: white;
-  cursor: pointer;
-  transition: 1s linear;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-input[type="submit"]:hover {
-  background-color: gray;
-  border: 2px solid gray;
+@media (max-width: 230px) {
+  .container-search {
+    margin-top: 10rem;
+  }
 }

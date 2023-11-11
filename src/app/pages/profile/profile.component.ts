@@ -25,35 +25,35 @@ export class ProfileComponent {
       newEmail: HTMLInputElement, newUrl: HTMLInputElement) {
     event.preventDefault();
 
-    if (newName.value !== "") {
+    if (newName.value) {
       this.user1.name = newName.value;
       console.log(this.user1.name);
       this.verde = true;
       this.rojo = false;
     }
 
-    if (newLastName.value !== "") {
+    if (newLastName.value) {
       this.user1.last_name = newLastName.value;
       this.verde = true;
       this.rojo = false;
     }
 
-    if (newEmail.value !== "") {
+    if (newEmail.value) {
       this.user1.email = newEmail.value;
       this.verde = true;
       this.rojo = false;
     }
 
-    if (newUrl.value !== "") {
+    if (newUrl.value) {
       this.user1.photo = newUrl.value;
       this.verde = true;
       this.rojo = false;
     }
 
-    if (newName.value === ""
-      && newLastName.value === ""
-      && newEmail.value === ""
-      && newUrl.value === "") {
+    if (!newName.value
+      && !newLastName.value
+      && !newEmail.value
+      && !newUrl.value) {
       this.verde = false;
       this.rojo = true;
     }

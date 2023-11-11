@@ -1,4 +1,15 @@
-.container {
+section {
+  width: 100vw;
+  height: calc(100vh - 7rem);
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-form {
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -7,7 +18,7 @@
   gap: 2rem;
 }
 
-h1 {
+.container-form h1 {
   font-size: 1.5rem;
 }
 
