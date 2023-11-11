@@ -12,16 +12,11 @@ export class CardComponent {
   @Input() isEven: boolean;
   @Output() eventoBook = new EventEmitter<Book>();
 
-  constructor() {
-
-  }
+  constructor() {}
 
   delete() {
-
     let bookParaBorrar = this.bookPadre;
-
     this.eventoBook.emit(bookParaBorrar);
-
   }
 
 }

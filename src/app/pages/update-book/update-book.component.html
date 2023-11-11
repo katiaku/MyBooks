@@ -1,0 +1,16 @@
+<section>
+  <div class="container-form">
+    <h1>Modificar libro</h1>
+    <form (submit)="update($event, newTitulo, newTipo, newAutor, newPrecio,
+        newPhoto, newIDLibro, newIDUsuario)">
+      <input #newTitulo type="text" id="titulo" name="titulo" placeholder="Título">
+      <input #newTipo type="text" id="tipo" name="tipo" placeholder="Tapa blanda/dura">
+      <input #newAutor type="text" id="autor" name="autor" placeholder="Autor">
+      <input #newPrecio type="number" id="precio" name="precio" placeholder="Precio">
+      <input #newPhoto type="text" id="photo" name="photo" placeholder="Photo URL">
+      <input #newIDLibro type="number" id="id_libro" name="id_libro" placeholder="ID del libro">
+      <input #newIDUsuario type="number" id="id_usuario" name="id_usuario" placeholder="ID del usuario">
+      <input type="submit" value="Modificar libro">
+    </form>
+  </div>
+</section>
