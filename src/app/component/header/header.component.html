@@ -1,11 +1,12 @@
 <header>
   <span>MyBooks</span>
-  <ul>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/books">Books</a></li>
-    <li><a routerLink="/add-book">AddBook</a></li>
-    <li><a routerLink="/update-book">UpdateBook</a></li>
-    <li><a routerLink="/register">Registro</a></li>
-    <li><a routerLink="/profile">Profile</a></li>
+  <ul class="header-nav">
+    <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+    <li><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
+    <li><a routerLink="/books" routerLinkActive="active-link">Books</a></li>
+    <li><a routerLink="/add-book" routerLinkActive="active-link">AddBook</a></li>
+    <li><a routerLink="/update-book" routerLinkActive="active-link">UpdateBook</a></li>
+    <li><a routerLink="/register" routerLinkActive="active-link">Registro</a></li>
+    <li><a routerLink="/profile" routerLinkActive="active-link">Profile</a></li>
   </ul>
 </header>

@@ -1,0 +1,8 @@
+section {
+  width: 100vw;
+  height: calc(100vh - 7rem);
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

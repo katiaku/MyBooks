@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class BooksService {
 
   private books: Book[];
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     this.books = [];
   }
 
@@ -19,16 +20,19 @@ export class BooksService {
   public getOne(id_book: number): Book {
     const book = this.books.find((book) => book.id_book === id_book);
     if(book) {
-      alert(book.title);
       return book;
     } else {
-      alert("El ID no se ha encontrado");
+      this.toastr.error('El ID no se ha encontrado', '', {
+        positionClass: 'my-toast-position'
+      });
     }
   };
 
   public add(book: Book): void {
     this.books.push(book);
-    alert("El libro está añadido");
+    this.toastr.success('El libro está añadido', '', {
+      positionClass: 'my-toast-position'
+    });
   };
 
   public edit(updatedBook: Book): boolean {
@@ -44,11 +48,15 @@ export class BooksService {
       this.books[index].id_book = updatedBook.id_book;
       this.books[index].id_user = updatedBook.id_user;
 
-      alert("El libro está modificado");
+      this.toastr.success("El libro está modificado", '', {
+        positionClass: 'my-toast-position'
+      });
       return true;
 
     } else {
-      alert("El libro no se ha encontrado");
+      this.toastr.error("El libro no se ha encontrado", '', {
+        positionClass: 'my-toast-position'
+      });
       return false;
     }
 

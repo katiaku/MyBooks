@@ -12,7 +12,7 @@ section {
   justify-content: center;
 }
 
-.container {
+.hero-container {
   background-color: var(--background__gray);
   padding-inline: 4rem;
   padding-block: 2rem;
