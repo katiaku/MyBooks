@@ -1,13 +1,13 @@
 <div class="book-card">
   <button type="button" (click)="delete()"><i class="bi bi-x-circle-fill"></i></button>
   <div class="img-container">
-    <img src="{{ bookPadre.photo }}" alt="{{ bookPadre.title }} de {{ bookPadre.author }} photo">
+    <img src="{{ bookPadre?.photo }}" alt="photo of {{ bookPadre?.title }}">
   </div>
-  <h1>{{ bookPadre.title }}</h1>
-  <p>Tipo: {{ bookPadre.type }}</p>
-  <p>Autor: {{ bookPadre.author }}</p>
-  <p>Precio: {{ bookPadre.price }}</p>
-  <p>ID del libro: {{ bookPadre.id_book | ref }}</p>
-  <p>ID del usuario: {{ bookPadre.id_user }}</p>
+  <h1>{{ bookPadre?.title }}</h1>
+  <p>Tipo: {{ bookPadre?.type }}</p>
+  <p>Autor: {{ bookPadre?.author }}</p>
+  <p>Precio: {{ bookPadre?.price }}</p>
+  <p>ID del libro: {{ bookPadre?.id_book | ref }}</p>
+  <p>ID del usuario: {{ bookPadre?.id_user }}</p>
   <button [ngClass]="{'par': isEven, 'impar': !isEven}">Comprar</button>
 </div>

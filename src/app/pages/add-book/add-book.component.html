@@ -1,7 +1,7 @@
 <section>
   <div class="container-form">
     <h1>Añadir libro</h1>
-    <form (submit)="enviar($event, newTitulo, newTipo, newAutor, newPrecio,
+    <form (submit)="agregar($event, newTitulo, newTipo, newAutor, newPrecio,
         newPhoto, newIDLibro, newIDUsuario)">
       <input #newTitulo type="text" id="titulo" name="titulo" placeholder="Título">
       <input #newTipo type="text" id="tipo" name="tipo" placeholder="Tapa blanda/dura">

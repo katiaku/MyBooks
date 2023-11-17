@@ -1,37 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, ɵbypassSanitizationTrustStyle } from '@angular/core';
 import { Book } from 'src/app/models/book';
+import { Response } from 'src/app/models/response';
 import { BooksService } from 'src/app/shared/books.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
+
 export class BooksComponent {
 
-  // book1: Book;
-  book: Book;
-
-  constructor(public booksService: BooksService) {
-
-    // this.book1 = new Book(
-    //   "Clean Code",
-    //   "Tapa blanda",
-    //   "Robert C. Martin",
-    //   50,
-    //   "https://m.media-amazon.com/images/I/51E2055ZGUL._SY522_.jpg"
-    // );
-
-    // this.booksService.add(this.book1);
-
+  constructor(public apiService: BooksService,
+    private toast: ToastrService) {
+    this.apiService.book = null;
+    this.apiService.books = null;
   }
 
-  deleteBook(bookParaBorrar: Book) {
-    this.booksService.delete(bookParaBorrar);
+  mostrarUno(searchId: HTMLInputElement) {
+    this.apiService.getOne(parseInt(searchId.value)).subscribe((resp: Response) => {
+      console.log(resp);
+      if (resp.error) {
+        this.toast.warning('El ID no se ha encontrado', '', {positionClass: 'my-toast-position'});
+        this.mostrarTodos();
+      } else {
+        this.apiService.book = resp.data;
+      }
+    });
   }
 
-  searchBook(searchId: HTMLInputElement) {
-    this.book = this.booksService.getOne(parseInt(searchId.value));
+  mostrarTodos() {
+    this.apiService.getAll().subscribe((resp: Response) => {
+      console.log(resp.data);
+      if (resp.error)
+        this.toast.warning('No hay libros', '', {positionClass: 'my-toast-position'});
+      else
+        this.apiService.books = resp.data;
+    });
+  }
+
+  eliminar(bookParaBorrar: Book) {
+    this.apiService.delete(bookParaBorrar.id_book).subscribe((resp: Response) => {
+      console.log(resp);
+      if (resp.error)
+        alert('Error al borrar el libro');
+      else
+        this.apiService.book = null;
+        this.apiService.books = resp.data;
+    });
   }
 
 }
