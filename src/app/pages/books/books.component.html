@@ -1,26 +1,25 @@
 <section>
   <div class="container-search">
     <input #searchId id="search" name="search" type="number" placeholder="Buscador de libros...">
-    <button (click)="searchBook(searchId)"><i class="bi bi-search"></i></button>
+    <button (click)="mostrarUno(searchId)"><i class="bi bi-search"></i></button>
   </div>
   <div class="container-books">
-    <span *ngIf="booksService.getAll().length === 0">No hay libros <i class="bi bi-emoji-frown"></i></span>
 
-    <div *ngIf="book; else showAll">
+    <div *ngIf="apiService.book; else showAll">
       <app-card
-      [bookPadre]="book"
+      [bookPadre]="apiService.book"
       [isEven]="!even"
-      (eventoBook)="deleteBook($event)"
+      (eventoBook)="eliminar($event)"
       >
       </app-card>
     </div>
 
     <ng-template #showAll>
       <app-card
+        *ngFor="let book of apiService.books; let even = even"
         [bookPadre]="book"
         [isEven]="even"
-        *ngFor="let book of booksService.getAll(); let even = even"
-        (eventoBook)="deleteBook($event)"
+        (eventoBook)="eliminar($event)"
       >
       </app-card>
     </ng-template>
