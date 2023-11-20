@@ -18,16 +18,26 @@ export class BooksComponent {
     this.apiService.books = null;
   }
 
+  ngOnInit(): void {
+    this.mostrarTodos();
+  }
+
   mostrarUno(searchId: HTMLInputElement) {
-    this.apiService.getOne(parseInt(searchId.value)).subscribe((resp: Response) => {
-      console.log(resp);
-      if (resp.error) {
-        this.toast.warning('El ID no se ha encontrado', '', {positionClass: 'my-toast-position'});
-        this.mostrarTodos();
-      } else {
-        this.apiService.book = resp.data;
-      }
-    });
+    const id_book = parseInt(searchId.value);
+
+    if (!isNaN(id_book)) {
+      this.apiService.getOne(id_book).subscribe((resp: Response) => {
+        console.log(resp);
+        if (resp.error) {
+          this.toast.warning('El ID no se ha encontrado', '', {positionClass: 'my-toast-position'});
+          this.mostrarTodos();
+        } else {
+          this.apiService.books = [resp.data];
+        }
+      });
+    } else {
+      this.apiService.books = [];
+    }
   }
 
   mostrarTodos() {
