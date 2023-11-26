@@ -3,13 +3,13 @@
     <h1>Modificar libro</h1>
     <form (submit)="actualizar($event, newTitulo, newTipo, newAutor, newPrecio,
         newPhoto, newIDLibro, newIDUsuario)">
-      <input #newTitulo type="text" id="titulo" name="titulo" placeholder="Título">
-      <input #newTipo type="text" id="tipo" name="tipo" placeholder="Tapa blanda/dura">
-      <input #newAutor type="text" id="autor" name="autor" placeholder="Autor">
-      <input #newPrecio type="number" id="precio" name="precio" placeholder="Precio">
+      <input #newTitulo type="text" id="title" name="title" placeholder="Título">
+      <input #newTipo type="text" id="type" name="type" placeholder="Tapa blanda/dura">
+      <input #newAutor type="text" id="author" name="author" placeholder="Autor">
+      <input #newPrecio type="number" id="price" name="price" placeholder="Precio">
       <input #newPhoto type="text" id="photo" name="photo" placeholder="Photo URL">
-      <input #newIDLibro type="number" id="id_libro" name="id_libro" placeholder="ID del libro">
-      <input #newIDUsuario type="number" id="id_usuario" name="id_usuario" placeholder="ID del usuario">
+      <input #newIDLibro type="number" id="id_book" name="id_book" placeholder="ID del libro">
+      <input #newIDUsuario type="number" id="id_user" name="id_user" placeholder="ID del usuario">
       <input type="submit" value="Modificar libro">
     </form>
   </div>

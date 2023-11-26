@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { UsersService } from 'src/app/shared/users.service';
+import { Response } from 'src/app/models/response';
 
 @Component({
   selector: 'app-form-register',
@@ -11,25 +14,36 @@ export class FormRegisterComponent {
 
   public myForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+    private apiService: UsersService,
+    private toast: ToastrService) {
     this.buildForm();
   }
 
   public register() {
     const user = this.myForm.value;
     console.log(user);
+
+    this.apiService.register(user).subscribe((resp: Response) => {
+      console.log(resp);
+        if (!resp.error) {
+          this.toast.success('Usuario creado satisfactoriamente', '', { positionClass: 'my-toast-position' });
+        } else {
+          this.toast.error('El usuario ya existe', '', { positionClass: 'my-toast-position' });
+        }
+    });
   }
 
   private buildForm() {
     const minPasswordLength = 8;
 
     this.myForm = this.formBuilder.group({
-      nombre: [, Validators.required],
-      apellido: [, Validators.required],
+      name: [, Validators.required],
+      last_name: [, Validators.required],
       email: [, [Validators.required, Validators.email]],
-      url: [, Validators.required],
-      contrasenya: [, [Validators.required, Validators.minLength(minPasswordLength)]],
-      repetir: [, [Validators.required, this.checkPasswords]]
+      photo: [, Validators.required],
+      password: [, [Validators.required, Validators.minLength(minPasswordLength)]],
+      confirm: [, [Validators.required, this.checkPasswords]]
     });
 
   }
@@ -38,7 +52,7 @@ export class FormRegisterComponent {
 
     let resultado = { matchPassword: true };
 
-    if (control.parent?.value.contrasenya === control.value) {
+    if (control.parent?.value.password === control.value) {
       resultado = null;
     }
 

@@ -1,10 +1,9 @@
-<section>
+<section class="">
   <div class="container-search">
-    <input #searchId id="search" name="search" type="number" placeholder="Buscador de libros...">
-    <button (click)="mostrarUno(searchId)"><i class="bi bi-search"></i></button>
+    <input #searchId id="search" name="search" type="number" placeholder="ID del libro">
+    <button (click)="buscarPorIdDelLibro(searchId, apiServiceUsers.user.id_user)"><i class="bi bi-search"></i></button>
   </div>
   <div class="container-books" *ngIf="apiService.books && apiService.books.length > 0">
-
     <app-card
       *ngFor="let book of apiService.books; let even = even"
       [bookPadre]="book"
@@ -15,12 +14,11 @@
 
     <div *ngIf="apiService.book">
       <app-card
-      [bookPadre]="apiService.book"
-      [isEven]="!even"
-      (eventoBook)="eliminar($event)"
+        [bookPadre]="apiService.book"
+        [isEven]="!even"
+        (eventoBook)="eliminar($event)"
       >
       </app-card>
     </div>
-
   </div>
 </section>
