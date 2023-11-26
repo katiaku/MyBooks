@@ -28,6 +28,8 @@ export class AddBookComponent {
     let book: Book = new Book(newTitulo.value, newTipo.value, newAutor.value, parseInt(newPrecio.value),
       newPhoto.value, parseInt(newIDLibro.value), parseInt(newIDUsuario.value));
 
+    console.log(book);
+
     this.apiService.add(book).subscribe((resp: Response) => {
       console.log(resp);
         if (!resp.error) {

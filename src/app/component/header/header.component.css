@@ -44,31 +44,19 @@ a:hover {
   color: var(--background__darkgrayblue);
 }
 
-@media (max-width: 963px) {
-  span {
-    font-size: 1.5rem;
-  }
-
+@media (max-width: 639px) {
   header {
-    flex-direction: column;
-    gap: .6rem;
-    height: auto;
-    padding-block: .7rem;
+    padding-block: .4rem;
   }
 
-  .header-nav {
-    font-size: .9rem;
-  }
-}
-
-@media (max-width: 515px) {
   span {
     font-size: 1.2rem;
   }
 
   .header-nav {
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: .6rem;
     row-gap: .6rem;
+    font-size: .8rem;
   }
 }

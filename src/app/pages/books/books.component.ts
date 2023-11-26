@@ -1,8 +1,9 @@
-import { Component, ɵbypassSanitizationTrustStyle } from '@angular/core';
+import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { Response } from 'src/app/models/response';
 import { BooksService } from 'src/app/shared/books.service';
 import { ToastrService } from 'ngx-toastr';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-books',
@@ -12,27 +13,38 @@ import { ToastrService } from 'ngx-toastr';
 
 export class BooksComponent {
 
-  constructor(public apiService: BooksService,
+  constructor(public apiService: BooksService, public apiServiceUsers: UsersService,
     private toast: ToastrService) {
     this.apiService.book = null;
     this.apiService.books = null;
   }
 
   ngOnInit(): void {
-    this.mostrarTodos();
+    this.showAllBooks(this.apiServiceUsers.user.id_user);
   }
 
-  mostrarUno(searchId: HTMLInputElement) {
+  showAllBooks(id_user: number) {
+    this.apiService.getAll(id_user).subscribe((resp: any) => {
+      console.log(resp);
+      if (resp.error || resp.length <= 0)
+        this.toast.warning('No hay libros', '', {positionClass: 'my-toast-position'});
+      else
+        this.apiService.books = resp;
+    });
+  }
+
+  buscarPorIdDelLibro(searchId: HTMLInputElement, id_user: number) {
     const id_book = parseInt(searchId.value);
+    console.log(id_book);
+    console.log(id_user);
 
     if (!isNaN(id_book)) {
-      this.apiService.getOne(id_book).subscribe((resp: Response) => {
+      this.apiService.getByBookId(id_book, id_user).subscribe((resp: any) => {
         console.log(resp);
-        if (resp.error) {
+        if (resp.error || resp.length == 0) {
           this.toast.warning('El ID no se ha encontrado', '', {positionClass: 'my-toast-position'});
-          this.mostrarTodos();
         } else {
-          this.apiService.books = [resp.data];
+          this.apiService.books = resp;
         }
       });
     } else {
@@ -40,24 +52,15 @@ export class BooksComponent {
     }
   }
 
-  mostrarTodos() {
-    this.apiService.getAll().subscribe((resp: Response) => {
-      console.log(resp.data);
-      if (resp.error)
-        this.toast.warning('No hay libros', '', {positionClass: 'my-toast-position'});
-      else
-        this.apiService.books = resp.data;
-    });
-  }
-
   eliminar(bookParaBorrar: Book) {
-    this.apiService.delete(bookParaBorrar.id_book).subscribe((resp: Response) => {
+    this.apiService.delete(bookParaBorrar).subscribe((resp: Response) => {
       console.log(resp);
       if (resp.error)
-        alert('Error al borrar el libro');
+        this.toast.error('Se ha producido un error', '', {positionClass: 'my-toast-position'});
       else
         this.apiService.book = null;
-        this.apiService.books = resp.data;
+        this.apiService.books = [...this.apiService.books.filter((book) => book.id_book !== bookParaBorrar.id_book)];
+        this.toast.success('Libro borrado satisfactoriamente', '', {positionClass: 'my-toast-position'});
     });
   }
 

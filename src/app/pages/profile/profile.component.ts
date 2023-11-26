@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,55 +10,35 @@ import { User } from 'src/app/models/user';
 })
 export class ProfileComponent {
 
-  user1: User;
+  public user: User;
 
-  verde: boolean = false;
-  rojo: boolean = false;
+  constructor(private apiService: UsersService,
+    private toast: ToastrService) {
 
-  constructor() {
-
-    this.user1 = new User("Ruben", "Rivas Briceño", "uncorreo123@gmail.com",
-      "https://static.vecteezy.com/system/resources/previews/008/420/425/original/cute-penguin-wearing-earmuff-cartoon-icon-illustration-animal-winter-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg",
-      "qwerty12");
+    this.user = this.apiService.user;
 
   }
 
-  enviar(event: Event, newName: HTMLInputElement, newLastName: HTMLInputElement,
-      newEmail: HTMLInputElement, newUrl: HTMLInputElement) {
-    event.preventDefault();
+  modificar(newName: HTMLInputElement, newLastName: HTMLInputElement,
+      newEmail: HTMLInputElement, newPhoto: HTMLInputElement) {
 
-    if (newName.value) {
-      this.user1.name = newName.value;
-      console.log(this.user1.name);
-      this.verde = true;
-      this.rojo = false;
-    }
+    let user: User = new User(newName.value, newLastName.value, newEmail.value, newPhoto.value);
 
-    if (newLastName.value) {
-      this.user1.last_name = newLastName.value;
-      this.verde = true;
-      this.rojo = false;
-    }
+    console.log(user);
 
-    if (newEmail.value) {
-      this.user1.email = newEmail.value;
-      this.verde = true;
-      this.rojo = false;
-    }
-
-    if (newUrl.value) {
-      this.user1.photo = newUrl.value;
-      this.verde = true;
-      this.rojo = false;
-    }
-
-    if (!newName.value
-      && !newLastName.value
-      && !newEmail.value
-      && !newUrl.value) {
-      this.verde = false;
-      this.rojo = true;
-    }
+    this.apiService.edit(user).subscribe((resp: any) => {
+      console.log(resp);
+        if (!resp.error) {
+          this.toast.success('Datos modificados satisfactoriamente', '', {positionClass: 'my-toast-position'});
+          newName.value = '';
+          newLastName.value = '';
+          newEmail.value = '';
+          newPhoto.value = '';
+          this.user = user;
+        } else {
+          this.toast.error('Error al modificar el usuario', '', {positionClass: 'my-toast-position'});
+        }
+    });
 
   }
 
